@@ -23,18 +23,17 @@ data2 <- subset(data1, select = c(2))
 data2 <- slider(data2, 5)
 data1 <- cbind(data1, data2) # Derived values are binded to the original data
 data1 <- subset(data1, select = c("Id", "dist"))
-colnames(data1) <- c("strId", newname)
+colnames(data1) <- c("Id", newname)
 
 
-# update_job <- rforcecom.createBulkJob(session,
-#                                       operation ='update', object = myobject) # Create a new bulkjob for updating Salesforce
-# my_data <- data.frame(id = data1$strId, v2 = data1$dist) # Dataframe to be uploaded
-# colnames(my_data) <- c("id", newname)
-#
-# batches_info <- rforcecom.createBulkBatch(session,
-#                                           jobId = update_job$id, data = my_data) #Update job
-# close_job_info <- rforcecom.closeBulkJob(session, jobId=update_job$id)
+ update_job <- rforcecom.createBulkJob(session,
+                                       operation ='update', object = myobject) # Create a new bulkjob for updating Salesforce
+ my_data <- data.frame(data1) # Dataframe to be uploaded
+#colnames(my_data) <- c("id", newname)
+batches_info <- rforcecom.createBulkBatch(session,
+                                         jobId = update_job$id, data = my_data) #Update job
+close_job_info <- rforcecom.closeBulkJob(session, jobId=update_job$id)
 
-return(data1)
+return(nrow(data1))
 }
 
