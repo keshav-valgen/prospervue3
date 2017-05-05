@@ -198,7 +198,7 @@ updater <- function(access_token, instance_url, myobject, data){
   my_data <- data # Dataframe to be uploaded
   batches_info <- rforcecom.createBulkBatch(session,
                                             jobId = update_job$id, data = my_data) #Update job
-  close_job_info <- rforcecom.closeBulkJob(session, jobId=update_job$id)
+  #close_job_info <- rforcecom.closeBulkJob(session, jobId=update_job$id)
 
 }
 
