@@ -200,6 +200,8 @@ updater <- function(access_token, instance_url, myobject, data){
                                             jobId = update_job$id, data = my_data) #Update job
   close_job_info <- rforcecom.closeBulkJob(session, jobId=update_job$id)
 
+  rforcecom.logout(session)
+
 }
 
 
