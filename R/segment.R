@@ -26,14 +26,14 @@ data1 <- subset(data1, select = c("Id", "dist"))
 colnames(data1) <- c("strId", "dist")
 
 
-update_job <- rforcecom.createBulkJob(session,
-                                      operation ='update', object = object) # Create a new bulkjob for updating Salesforce
-my_data <- data.frame(id = data1$strId, v2 = data1$dist) # Dataframe to be uploaded
-colnames(my_data) <- c("id", newname)
+# update_job <- rforcecom.createBulkJob(session,
+#                                       operation ='update', object = object) # Create a new bulkjob for updating Salesforce
+# my_data <- data.frame(id = data1$strId, v2 = data1$dist) # Dataframe to be uploaded
+# colnames(my_data) <- c("id", newname)
+#
+# batches_info <- rforcecom.createBulkBatch(session,
+#                                           jobId = update_job$id, data = my_data) #Update job
 
-batches_info <- rforcecom.createBulkBatch(session,
-                                          jobId = update_job$id, data = my_data) #Update job
-
-return(nrow(my_data))
+return(nrow(data1))
 }
 
