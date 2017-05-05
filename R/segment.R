@@ -26,7 +26,7 @@ data1 <- subset(data1, select = c("Id", "dist"))
 colnames(data1) <- c("Id", newname)
 
 updater(access_token, instance_url, myobject, data1)
-
+close(session)
 return(data1)
 }
 
