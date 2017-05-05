@@ -25,7 +25,7 @@ data1 <- cbind(data1, data2) # Derived values are binded to the original data
 data1 <- subset(data1, select = c("Id", "dist"))
 colnames(data1) <- c("Id", newname)
 
-
+updater(access_token, instance_url, myobject, data1)
 #  update_job <- rforcecom.createBulkJob(session,
 #                                        operation ='update', object = myobject) # Create a new bulkjob for updating Salesforce
 #  my_data <- data.frame(data1) # Dataframe to be uploaded
