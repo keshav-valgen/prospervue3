@@ -19,21 +19,10 @@ quad <- function(access_token, instance_url, object, field1, field2, newname){
   var1 <- data_clean(var1) # New variable is created
   var2 <- data_clean(var2)
 
-  newdata <- data.frame(Id = data1$Id, var1, var2)
+  newdata <- data.frame(var1, var2)
   summary <- newdata %>% group_by(var1, var2) %>%
     summarise(counts = n())
   summary$Rank <- rank(-summary$counts, ties.method = "random")
-  newdata <- merge(newdata, summary, all = T)
-  newdata <- subset(newdata, select = c('Id', 'Rank'))
-  colnames(newdata) <- c("strId", "dist")
-
-  update_job <- rforcecom.createBulkJob(session,
-                                        operation ='update', object = object) # Create a new bulkjob for updating Salesforce
-  my_data <- data.frame(id = data1$strId, v2 = data1$dist) # Dataframe to be uploaded
-  colnames(my_data) <- c("id", newname)
-
-  batches_info <- rforcecom.createBulkBatch(session,
-                                            jobId = update_job$id, data = my_data) #Update job
-
-  return(paste0(nrow(data1)," records updated successfully"))
+  summary <- subset(summary, select = c("var1", "var2", "Rank"))
+  return(summary)
 }

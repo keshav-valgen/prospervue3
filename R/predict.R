@@ -42,17 +42,5 @@ predictor <- function(access_token, instance_url, object, numfield, catfield, ne
   indexdata <- index(indexdata)
   indexdata$Rank <- rank(-indexdata$index)
   indexdata <- subset(indexdata, select = c("Categorical", "index")) #Writing the ranks to each individual record
-  data2 <- merge(data1, indexdata, by.x = "categorical", by.y = "Categorical")
-  data2 <- subset(data2, select = c("Id", "categorical", "index"))
-  colnames(data2) <- c("strId", "categorical", "dist")
-
-  update_job <- rforcecom.createBulkJob(session,
-                                        operation ='update', object = object) # Create a new bulkjob for updating Salesforce
-  my_data <- data.frame(id = data1$strId, v2 = data1$dist) # Dataframe to be uploaded
-  colnames(my_data) <- c("id", newname)
-
-  batches_info <- rforcecom.createBulkBatch(session,
-                                            jobId = update_job$id, data = my_data) #Update job
-
-  return(paste0(nrow(data1)," records updated successfully"))
+  return(indexdata)
 }
