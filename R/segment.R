@@ -21,7 +21,7 @@ data1 <- na.omit(data1)
 # Data Treatment starts Here
 data2 <- subset(data1, select = c(2))
 data2 <- slider(data2, 5)
-data3 <- data.frame(cat  = unique(datas2$dist))
+data3 <- data.frame(cat  = unique(data2$dist))
 data3$cat <- as.character(data3$cat)
 
 data3$min <- parse_number(data3$cat)
