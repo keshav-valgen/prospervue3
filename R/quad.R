@@ -5,7 +5,7 @@
 #'@export quad
 #'
 
-quad <- function(access_token, instance_url, object, field1, field2){
+quad <- function(access_token, instance_url, object, field1, field2, newname){
 
   instance_u <- paste0(instance_url,'/')
   api <- '36.0'
@@ -23,6 +23,9 @@ quad <- function(access_token, instance_url, object, field1, field2){
   summary <- newdata %>% group_by(var1, var2) %>%
     summarise(counts = n())
   summary$Rank <- rank(-summary$counts, ties.method = "random")
-  summary <- subset(summary, select = c("var1", "var2", "Rank"))
-  return(summary)
+  newdata <- merge(newdata, summary, all = T)
+  newdata <- subset(newdata, select = c('Id', 'Rank'))
+  colnames(newdata) <- c("Id", newname)
+  updater(access_token, instance_url, myobject, data1)
+  return(newdata)
 }

@@ -6,7 +6,7 @@
 #'@export segment
 
 
-segment <- function(access_token, instance_url, object, field){
+segment <- function(access_token, instance_url, object, field, newname){
 
 
 instance_u <- paste0(instance_url,'/')
@@ -21,13 +21,10 @@ data1 <- na.omit(data1)
 # Data Treatment starts Here
 data2 <- subset(data1, select = c(2))
 data2 <- slider(data2, 5)
-data3 <- data.frame(cat  = unique(data2$dist))
-data3$cat <- as.character(data3$cat)
+data1 <- cbind(data1, data2) # Derived values are binded to the original data
+data1 <- subset(data1, select = c("Id", "dist"))
+colnames(data1) <- c("Id", newname)
 
-data3$min <- parse_number(data3$cat)
-data3$max <- stri_extract_last_words(data3$cat)
-data3$max <- as.numeric(data3$max)
-return(data3)
-
+updater(access_token, instance_url, myobject, data1)
 }
 

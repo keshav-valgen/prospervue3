@@ -6,7 +6,7 @@
 #'@export predictor
 #'
 
-predictor <- function(access_token, instance_url, object, numfield, catfield){
+predictor <- function(access_token, instance_url, object, numfield, catfield, newname){
 
   instance_u <- paste0(instance_url,'/')
   api <- '36.0'
@@ -42,5 +42,9 @@ predictor <- function(access_token, instance_url, object, numfield, catfield){
   indexdata <- index(indexdata)
   indexdata$Rank <- rank(-indexdata$index)
   indexdata <- subset(indexdata, select = c("Categorical", "index")) #Writing the ranks to each individual record
-  return(indexdata)
+  data2 <- merge(data1, indexdata, by.x = "categorical", by.y = "Categorical")
+  data2 <- subset(data2, select = c("Id", "index"))
+  colnames(data2) <- c("Id", newname)
+  updater(access_token, instance_url, myobject, data2)
+  return(data2)
 }
