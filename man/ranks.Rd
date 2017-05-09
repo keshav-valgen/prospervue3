@@ -4,7 +4,7 @@
 \alias{ranks}
 \title{Industry ranking}
 \usage{
-ranks(access_token, instance_url, object, depfield, indfield, newname)
+ranks(access_token, instance_url, object, depfield, indfield)
 }
 \description{
 This function ranks a categorical variable from a numeric variable

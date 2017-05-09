@@ -5,7 +5,7 @@
 #'@export quad
 #'
 
-quad <- function(access_token, instance_url, object, field1, field2, newname){
+quad <- function(access_token, instance_url, object, field1, field2){
 
   instance_u <- paste0(instance_url,'/')
   api <- '36.0'

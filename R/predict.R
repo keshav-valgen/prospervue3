@@ -6,7 +6,7 @@
 #'@export predictor
 #'
 
-predictor <- function(access_token, instance_url, object, numfield, catfield, newname){
+predictor <- function(access_token, instance_url, object, numfield, catfield){
 
   instance_u <- paste0(instance_url,'/')
   api <- '36.0'

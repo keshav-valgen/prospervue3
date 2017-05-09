@@ -5,7 +5,7 @@
 #'@import dplyr
 #'@export ranks
 
-ranks <- function(access_token, instance_url, object, depfield, indfield, newname){
+ranks <- function(access_token, instance_url, object, depfield, indfield){
 
   instance_u <- paste0(instance_url,'/')
   api <- '36.0'

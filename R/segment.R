@@ -6,7 +6,7 @@
 #'@export segment
 
 
-segment <- function(access_token, instance_url, object, field, newname){
+segment <- function(access_token, instance_url, object, field){
 
 
 instance_u <- paste0(instance_url,'/')

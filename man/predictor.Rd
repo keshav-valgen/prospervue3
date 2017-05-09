@@ -4,7 +4,7 @@
 \alias{predictor}
 \title{Predictive Profiling}
 \usage{
-predictor(access_token, instance_url, object, numfield, catfield, newname)
+predictor(access_token, instance_url, object, numfield, catfield)
 }
 \description{
 This function indexes one dependent variable from a numeric variable

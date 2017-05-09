@@ -4,7 +4,7 @@
 \alias{segment}
 \title{Segment}
 \usage{
-segment(access_token, instance_url, object, field, newname)
+segment(access_token, instance_url, object, field)
 }
 \description{
 This function builds a categorical variable from a numeric variable
