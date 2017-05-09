@@ -19,7 +19,7 @@ quad <- function(access_token, instance_url, object, field1, field2, newname){
   var1 <- data_clean(var1) # New variable is created
   var2 <- data_clean(var2)
 
-  newdata <- data.frame(var1, var2)
+  newdata <- data.frame(Id = data1$Id, var1, var2)
   summary <- newdata %>% group_by(var1, var2) %>%
     summarise(counts = n())
   summary$Rank <- rank(-summary$counts, ties.method = "random")
