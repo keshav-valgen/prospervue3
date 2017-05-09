@@ -9,9 +9,10 @@ quad <- function(access_token, instance_url, object, field1, field2, newname){
 
   instance_u <- paste0(instance_url,'/')
   api <- '36.0'
-  myquery <- paste0('Select Id, ', field1,', ',field2,' FROM ', object)
+  myobject <- object
+  myquery <- paste0('Select Id, ', field1,', ',field2,' FROM ', myobject)
   session <- c(sessionID = access_token,instanceURL = instance_u, apiVersion = api)
-  data1 <- rforcecom.bulkQuery(session, myquery, object)
+  data1 <- rforcecom.bulkQuery(session, myquery, myobject)
   data1 <- na.omit(data1)
 
   var1 <- data1[,2]
@@ -26,6 +27,6 @@ quad <- function(access_token, instance_url, object, field1, field2, newname){
   newdata <- merge(newdata, summary, all = T)
   newdata <- subset(newdata, select = c('Id', 'Rank'))
   colnames(newdata) <- c("Id", newname)
-  updater(access_token, instance_url, object, data1)
+  updater(access_token, instance_url, myobject, newdata)
   return(newdata)
 }
