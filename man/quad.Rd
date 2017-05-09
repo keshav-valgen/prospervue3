@@ -4,7 +4,7 @@
 \alias{quad}
 \title{This function takes two variables and converts them into a quad}
 \usage{
-quad(access_token, instance_url, object, field1, field2)
+quad(access_token, instance_url, object, field1, field2, newname)
 }
 \description{
 This function takes two variables and converts them into a quad
