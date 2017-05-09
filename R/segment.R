@@ -26,6 +26,7 @@ data3$cat <- as.character(data3$cat)
 
 data3$min <- parse_number(data3$cat)
 data3$max <- stri_extract_last_words(data3$cat)
+data3$max <- as.numeric(data3$max)
 return(data3)
 
 }
