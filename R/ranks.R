@@ -17,12 +17,9 @@ ranks <- function(access_token, instance_url, object, depfield, indfield, newnam
   data1 <- subset(data1, select = c("qual", "decile"))
   data1 <- data1 %>% group_by(qual, decile)%>% summarise(count = n())
   data1$count <- NULL
-  data1$dist[data1$dist == 1 | data1$dist == 2] <- 1
-  data1$dist[data1$dist == 3 | data1$dist == 4] <- 2
-  data1$dist[data1$dist == 5 | data1$dist == 6] <- 3
-  data1$dist[data1$dist == 7 | data1$dist == 8] <- 4
-  data1$dist[data1$dist == 9 | data1$dist == 10] <- 5
-  data1$dist[data1$dist == 11] <- 6
+
+  data1$decile[data1$decile == 5 | data1$decile == 6 | data1$decile == 7 | data1$decile == 8] <- 5
+  data1$decile[data1$decile == 9 | data1$decile == 10 | data1$decile == 11] <- 6
   return(data1)
 
 }
