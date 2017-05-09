@@ -20,6 +20,6 @@ ranks <- function(access_token, instance_url, object, depfield, indfield, newnam
 
   colnames(data1) <- c("Id", newname)
 
-  updater(access_token, instance_url, myobject, data1)
+  updater(access_token, instance_url, object, data1)
   return(data1)
 }

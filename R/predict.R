@@ -45,6 +45,6 @@ predictor <- function(access_token, instance_url, object, numfield, catfield, ne
   data2 <- merge(data1, indexdata, by.x = "categorical", by.y = "Categorical")
   data2 <- subset(data2, select = c("Id", "index"))
   colnames(data2) <- c("Id", newname)
-  updater(access_token, instance_url, myobject, data2)
+  updater(access_token, instance_url, object, data2)
   return(data2)
 }
