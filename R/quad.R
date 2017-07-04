@@ -3,7 +3,6 @@
 #'@import RForcecom
 #'@import dplyr
 #'@export quad
-#'
 
 quad <- function(access_token, instance_url, object, field1, field2, newname){
 
