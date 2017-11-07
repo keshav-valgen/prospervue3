@@ -11,8 +11,7 @@ Imports:
     RForcecom,
     dplyr,
     stringi,
-    readr,
-    testthat
+    readr
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
