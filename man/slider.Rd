@@ -9,4 +9,3 @@ slider(var, iter)
 \description{
 This function builds a categorical variable from a numeric variable
 }
-
