@@ -1,4 +1,4 @@
 library(testthat)
-library(prospervue)
+library(prospervue3)
 
-test_check("prospervue")
+test_check("prospervue3")
